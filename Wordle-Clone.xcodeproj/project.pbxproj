@@ -11,6 +11,7 @@
 		10B633792AF0117500D27597 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B633782AF0117500D27597 /* ContentView.swift */; };
 		10B6337B2AF0117600D27597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10B6337A2AF0117600D27597 /* Assets.xcassets */; };
 		10B6337E2AF0117600D27597 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10B6337D2AF0117600D27597 /* Preview Assets.xcassets */; };
+		10B633852AF0125200D27597 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B633842AF0125200D27597 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		10B633782AF0117500D27597 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		10B6337A2AF0117600D27597 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10B6337D2AF0117600D27597 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		10B633842AF0125200D27597 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +53,11 @@
 		10B633752AF0117500D27597 /* Wordle-Clone */ = {
 			isa = PBXGroup;
 			children = (
-				10B633762AF0117500D27597 /* Wordle_CloneApp.swift */,
-				10B633782AF0117500D27597 /* ContentView.swift */,
+				10B633842AF0125200D27597 /* LaunchScreen.storyboard */,
 				10B6337A2AF0117600D27597 /* Assets.xcassets */,
 				10B6337C2AF0117600D27597 /* Preview Content */,
+				10B633762AF0117500D27597 /* Wordle_CloneApp.swift */,
+				10B633782AF0117500D27597 /* ContentView.swift */,
 			);
 			path = "Wordle-Clone";
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10B633852AF0125200D27597 /* LaunchScreen.storyboard in Resources */,
 				10B6337E2AF0117600D27597 /* Preview Assets.xcassets in Resources */,
 				10B6337B2AF0117600D27597 /* Assets.xcassets in Resources */,
 			);
@@ -273,8 +277,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,8 +308,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
