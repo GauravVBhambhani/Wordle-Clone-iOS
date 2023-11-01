@@ -13,16 +13,27 @@ struct GameView: View {
     
     var body: some View {
         NavigationView {
-            
-            VStack (spacing: 3) {
-                GuessView(guess: $dm.guesses[0])
-                GuessView(guess: $dm.guesses[1])
-                GuessView(guess: $dm.guesses[2])
-                GuessView(guess: $dm.guesses[3])
-                GuessView(guess: $dm.guesses[4])
-                GuessView(guess: $dm.guesses[5])
+            VStack {
+                Spacer()
+                
+                VStack (spacing: 3) {
+                    GuessView(guess: $dm.guesses[0])
+                    GuessView(guess: $dm.guesses[1])
+                    GuessView(guess: $dm.guesses[2])
+                    GuessView(guess: $dm.guesses[3])
+                    GuessView(guess: $dm.guesses[4])
+                    GuessView(guess: $dm.guesses[5])
+                }
+                .frame(width: Global.broadWidth, height: 6 * Global.broadWidth / 5)
+                
+                Spacer()
+                
+                Keyboard()
+                    .scaleEffect(Global.keyboardScale)
+                    .padding(.top)
+                
+                Spacer()
             }
-            .frame(width: Global.broadWidth, height: 6 * Global.broadWidth / 5)
             // No matter what screen we're using this on, the board will fit within a 5X6 rectangle.
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
