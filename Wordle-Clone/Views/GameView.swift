@@ -17,12 +17,21 @@ struct GameView: View {
                 Spacer()
                 
                 VStack (spacing: 3) {
-                    GuessView(guess: $dm.guesses[0])
-                    GuessView(guess: $dm.guesses[1])
-                    GuessView(guess: $dm.guesses[2])
-                    GuessView(guess: $dm.guesses[3])
-                    GuessView(guess: $dm.guesses[4])
-                    GuessView(guess: $dm.guesses[5])
+                    ForEach(0...5, id: \.self){ i in
+                        GuessView(guess: $dm.guesses[i])
+                            .modifier(Shake(animatableData: CGFloat(dm.incorrectAttempts[i])))
+                    }
+                    
+//                    GuessView(guess: $dm.guesses[1])
+//                        .modifier(Shake(animatableData: CGFloat(dm.incorrectAttempts[1])))
+//                    GuessView(guess: $dm.guesses[2])
+//                        .modifier(Shake(animatableData: CGFloat(dm.incorrectAttempts[2])))
+//                    GuessView(guess: $dm.guesses[3])
+//                        .modifier(Shake(animatableData: CGFloat(dm.incorrectAttempts[3])))
+//                    GuessView(guess: $dm.guesses[4])
+//                        .modifier(Shake(animatableData: CGFloat(dm.incorrectAttempts[4])))
+//                    GuessView(guess: $dm.guesses[5])
+//                        .modifier(Shake(animatableData: CGFloat(dm.incorrectAttempts[5])))
                 }
                 .frame(width: Global.broadWidth, height: 6 * Global.broadWidth / 5)
                 
@@ -50,7 +59,6 @@ struct GameView: View {
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .foregroundColor(.primary)
-                    
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {

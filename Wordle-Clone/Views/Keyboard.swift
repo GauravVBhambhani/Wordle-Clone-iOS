@@ -22,6 +22,8 @@ struct Keyboard: View {
                 ForEach(firstRowArray, id: \.self) { letter in
                     LetterButtonView(letter: letter)
                 }
+                .disabled(dm.disabledKeys)
+                .opacity(dm.disabledKeys ? 0.6 : 1)
                 
             }
             
@@ -29,6 +31,8 @@ struct Keyboard: View {
                 ForEach(secondRowArray, id: \.self) { letter in
                     LetterButtonView(letter: letter)
                 }
+                .disabled(dm.disabledKeys)
+                .opacity(dm.disabledKeys ? 0.6 : 1)
                 
             }
             
@@ -42,10 +46,18 @@ struct Keyboard: View {
                 .frame(width: 60, height: 50)
                 .foregroundColor(.primary)
                 .background(Color.unused)
+                .disabled(dm.currentWord.count < 5 || !dm.inPlay)
+                .opacity((dm.currentWord.count < 5 || !dm.inPlay) ? 0.6 : 1)
+                
+                
                 
                 ForEach(thirdRowArray, id: \.self) { letter in
                     LetterButtonView(letter: letter)
                 }
+                .disabled(dm.disabledKeys)
+                .opacity(dm.disabledKeys ? 0.6 : 1)
+                
+                
                 
                 Button {
                     dm.removeLetterFromCurrentWord()
@@ -55,9 +67,10 @@ struct Keyboard: View {
                         .frame(width: 40, height: 50)
                         .foregroundColor(.primary)
                         .background(Color.unused)
+                        .disabled(!dm.inPlay || dm.currentWord.count == 0)
+                        .opacity((!dm.inPlay || dm.currentWord.count == 0) ? 0.6 : 1)
                 }
             }
-            
         }
     }
 }
