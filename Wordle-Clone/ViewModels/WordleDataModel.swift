@@ -25,6 +25,8 @@ class WordleDataModel: ObservableObject {
     var inPlay = false // to check if user has started the game. false initially. set to true in newGame() when it is triggered.
     
     
+    var gameOver = false // to check if user is still playing or game is over.
+    
     // this is a computed property used to check when the current word is not empty or when tryindex is greater than 0.
     var gameStarted: Bool {
         !currentWord.isEmpty || tryIndex > 0
@@ -71,14 +73,28 @@ class WordleDataModel: ObservableObject {
     }
     
     func enterWord() {
-        if verifyWord() {
-            print("Valid word!")
+        if currentWord == selectedWord {
+            gameOver = true
+            print("You Win :)")
+            setCurrentGuessColors()
+            inPlay = false
         } else {
-            print("Invalid word!")
-            withAnimation {
-                self.incorrectAttempts[tryIndex] += 1
+            if verifyWord() {
+                print("Valid word!")
+                setCurrentGuessColors()
+                tryIndex += 1
+                if tryIndex == 6 {
+                    gameOver = true
+                    inPlay = false
+                    print("You Lose :(")
+                }
+            } else {
+                print("Invalid word!")
+                withAnimation {
+                    self.incorrectAttempts[tryIndex] += 1
+                }
+                incorrectAttempts[tryIndex] = 0
             }
-            incorrectAttempts[tryIndex] = 0
         }
     }
     
@@ -99,5 +115,45 @@ class WordleDataModel: ObservableObject {
     // check if word exists.
     func verifyWord() -> Bool {
         UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: currentWord)
+    }
+    
+    // to set the background colors of each box
+    func setCurrentGuessColors() {
+        let correctLetters = selectedWord.map {String($0)}
+        
+        var frequency = [String : Int]() // dict
+        for letter in correctLetters {
+            frequency[letter, default: 0] += 1
+        }
+        
+        // checking for correct
+        for index in 0...4 {
+            let correctLetter = correctLetters[index]
+            let guessLetter = guesses[tryIndex].guessLetters[index]
+            if guessLetter == correctLetter {
+                guesses[tryIndex].bgColors[index] = .correct
+                frequency[guessLetter]! -= 1
+            }
+        }
+        
+        // checking for misplaced
+        for index in 0...4 {
+            let guessLetter = guesses[tryIndex].guessLetters[index]
+            // check if guess letter is in correct letter and also check if background color at the current guess is not already set to correct.
+            // so we can't override a correct letter with a misplaced letter.
+            if correctLetters.contains(guessLetter)
+                && guesses[tryIndex].bgColors[index] != .correct
+                && frequency[guessLetter]! > 0 {
+                
+                guesses[tryIndex].bgColors[index] = .misplaced
+                frequency[guessLetter]! -= 1
+                
+            }
+        }
+        
+        // check for wrong is already done as all are initially marked as wrong.
+        
+        print(selectedWord)
+        print(guesses[tryIndex].word)
     }
 }
